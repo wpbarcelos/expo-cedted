@@ -1,5 +1,6 @@
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
+import { Check } from "lucide-react";
 
 export default function Form() {
   return (
@@ -9,6 +10,7 @@ export default function Form() {
         placeholder="O que você precisa comprar?"
       />
       <TouchableOpacity style={styles.button}>
+        <Check color="#fff" size={16} />
         <Text style={styles.buttonText}>Adicionar</Text>
       </TouchableOpacity>
     </View>
