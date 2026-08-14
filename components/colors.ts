@@ -1,4 +1,4 @@
 export const colors = {
-  azul500: "black",
+  azul500: "#007bff",
   titulo: 22,
 };
