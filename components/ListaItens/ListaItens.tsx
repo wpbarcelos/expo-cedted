@@ -1,10 +1,52 @@
 import { CircleCheckBig, CircleDashed, Trash2 } from "lucide-react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 import { useState } from "react";
+import { ProdutoItem } from "../../interfaces/ProdutoItem";
+import ProdutoListaItem from "../ProdutoListaItem/ProdutoListaItem";
+
+export const DATA: ProdutoItem[] = [
+  {
+    id: "1",
+    nome: "Arroz (5kg)",
+    comprado: true,
+  },
+  {
+    id: "2",
+    nome: "Feijão Preto (1kg)",
+    comprado: false,
+  },
+  {
+    id: "3",
+    nome: "Macarrão Espaguete",
+    comprado: true,
+  },
+  {
+    id: "4",
+    nome: "Óleo de Soja",
+    comprado: false,
+  },
+  {
+    id: "5",
+    nome: "Açúcar Refinado",
+    comprado: false,
+  },
+  {
+    id: "4",
+    nome: "Óleo de Soja",
+    comprado: false,
+  },
+  {
+    id: "5",
+    nome: "Açúcar Refinado",
+    comprado: false,
+  },
+];
 
 export default function ListaItens() {
   const [active, setActive] = useState("presentes");
+
+  const [produtos, setProdutos] = useState<ProdutoItem[]>([]);
 
   function alterarActiveParaPresentes() {
     setActive("presentes");
@@ -41,16 +83,11 @@ export default function ListaItens() {
       </View>
 
       {/* Lista de itens*/}
-
-      <View style={styles.containerItem}>
-        <TouchableOpacity style={styles.buttonTopBar}>
-          <Text>Biscoito</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <Trash2 color={"#777"} strokeWidth={1} />
-        </TouchableOpacity>
-      </View>
+      <FlatList<ProdutoItem>
+        data={DATA}
+        showsVerticalScrollIndicator={false}
+        renderItem={(linha) => <ProdutoListaItem produto={linha.item} />}
+      />
     </View>
   );
 }
